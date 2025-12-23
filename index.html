@@ -1,21 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Private Photos</title>
+  <title>Locked Photos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { background:#111; color:#fff; text-align:center; font-family:Arial; }
-    img { width:90%; max-width:400px; margin:10px auto; display:block; border-radius:10px; }
+    body {
+      background:#111;
+      color:white;
+      text-align:center;
+      font-family:Arial;
+    }
+    img {
+      width:90%;
+      margin:10px 0;
+      display:none;
+      border-radius:10px;
+    }
+    input, button {
+      padding:10px;
+      font-size:16px;
+    }
   </style>
 </head>
 <body>
 
-<h2>🔒 Private Photos</h2>
+<h3>🔐 Enter Password</h3>
+<input type="password" id="pass">
+<button onclick="unlock()">Unlock</button>
+
+<p id="msg"></p>
 
 <img src="photo1.jpg">
 <img src="photo2.jpg">
 <img src="photo3.jpg">
+
+<script>
+function unlock(){
+  const p = document.getElementById("pass").value;
+  if(p === "Vg!_5HhERrxOhVB"){
+    document.querySelectorAll("img")
+      .forEach(i => i.style.display="block");
+    document.getElementById("msg").innerText="Unlocked ✅";
+  } else {
+    document.getElementById("msg").innerText="Wrong Password ❌";
+  }
+}
+</script>
 
 </body>
 </html>
